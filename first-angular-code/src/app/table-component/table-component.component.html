@@ -1,0 +1,19 @@
+<ng-content></ng-content>
+<table>
+    <tr *ngFor="let n of names"> <!-- here we r using pipe " | " because we can not loop it until it receivs the final vale -->
+      <td>
+        <p [class.is-done]="n.isDone">{{n.name}}</p>
+        <!--in angular all css classes we can apply them based on the condition  -->
+      </td>
+      <td>
+        <p [class.is-done]="n.isDone">{{n.age}}</p>
+      </td>
+      <td>
+        <p [class.is-done]="n.isDone">{{n.date}}</p>
+      </td>
+      <td>
+        <button (click)="remove(n)">x</button>
+        <button (click)="n.done()">{{n.isDone? "undo" : "done"}}</button>
+      </td>
+    </tr>
+  </table>

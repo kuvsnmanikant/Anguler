@@ -1,0 +1,20 @@
+<div><br><br>
+    <form action="" #tagform="ngForm" #formvalidation (ngSubmit)="addnewnamefun(); tagform.reset()">
+        <div class="fromclass">
+          <input name="addnewname" type="text" [(ngModel)]="addnewname" placeholder="add new name" required>
+          <div>
+            <input name="setdate" type="text" [(ngModel)]="selecteddate" [matDatepicker]="picker" required readonly> 
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </div>
+          <input name="ages" type="number" [(ngModel)]="age" placeholder="age" required>
+          
+          <button [disabled]="!formvalidation.checkValidity()">add</button>
+        </div>
+      </form>
+      <table-component [names] = "(names | async) ?? []" (removename)="remove($event)">
+        <h1 #localreference >this is content projection</h1>  <!-- to use this we need to use ng-content -->
+        <!-- we need to use this tag in the child component by @ContentChild('localreference') -->
+      </table-component>
+    
+</div>

@@ -1,0 +1,14 @@
+<div appPaint color="blue" style="height: 500px; width: 500px; border-color: aqua; border-style: solid;"></div>
+<!-- here we are using apppain directive to manipulate the html elements and values -->
+
+<mat-card class="demo-inline-calendar-card">
+  <mat-calendar [(selected)]="selecteddate"></mat-calendar>
+  <!-- 1 sqauare bracket and one normal bracket means 2 way binding -->
+</mat-card>
+<p>Selected date: {{selecteddate}}</p>
+<!-- double flower balckets mean to fetch the value fro ts and [] is  one way data binding -->
+
+<br>
+<a (click)="sendrequest()">first component</a>
+<!-- [routerLink]="['/firstcomponent', {date:selecteddate}]" this is how we will send the query param -->
+<!-- we need to import the routermodule in module.ts -->

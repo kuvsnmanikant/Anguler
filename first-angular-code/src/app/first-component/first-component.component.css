@@ -1,0 +1,34 @@
+a {
+    color: black;
+}
+.paraimg1 {
+	position: relative;
+	background-position: right;
+	background-size: 100%;
+	background-repeat: no-repeat;
+    color: aliceblue;
+
+}
+
+.paraimg1 {
+	background-image: url('../images/bg.gif');
+    background-color: black;
+}
+
+.paraimg1, table {
+    margin: auto;
+    text-align: center;
+    
+}
+h1:hover, button:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.is-done {
+    color: red;
+}
+
+.setsomevalue {
+    color: rgb(219, 48, 48);
+}

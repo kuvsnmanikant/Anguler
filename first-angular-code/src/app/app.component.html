@@ -1,0 +1,24 @@
+<header>
+  <a [routerLink] = "['/']">home</a><br>
+  <a [routerLink] = "['/calender']">calender</a><br>
+  <a [routerLink] = "['/firstcomponent']">firstcomponent</a><br>
+  <a [routerLink] = "['/servicesobservablesinjectioncomponent']">ServicesObservablesInjectionModule</a>
+</header>
+<body>
+  <router-outlet>
+  </router-outlet> <!-- we need to import routermodule  and router in app-routing.module.ts >> there is a route array add the component and path in it -->
+  
+  <!-- first create module > ng g m foldername -->
+  <!-- create component > ng g c foldername -->
+  <!-- create service > ng g s foldername-->
+  <!-- create directives > ng g d path/directivename --module modulepath -->
+  <!-- 1st parent constructor will be called
+        2nd child constructor will be called
+        3rd parent ngoninit will be called
+        4th child ngoninit will be called -->
+
+  <!-- ngonchange will be called when we are sending the data to another component it is always calles when there is a change in the value -->
+  <!-- dont use ngdocheck and ngonchange in same component-->
+
+  <!-- ngaftercontentinit will be trigred after the content is intialized this example is in "service-observables-injection.component.html" -->
+</body>

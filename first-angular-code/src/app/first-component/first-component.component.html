@@ -1,0 +1,62 @@
+<div class="paraimg1">
+  <form action="" #tagform="ngForm" (ngSubmit)="addnewnamefun(); tagform.reset()">
+    <div>
+      <input name='addname' type="text" #addname> <!-- # by using local reference setting the value-->
+      <h1 class="h1tag" (click)="add(addname.value)">{{title}}</h1>
+      <!--click id event binding add is a function that is declared in the ts file-->
+    </div>
+    <br>
+    <div>
+      <input name="addnewname" type="text" [(ngModel)]="addnewname" placeholder="add new name">
+      <!-- here we are using ngmodel to do 2 way binding -->
+      <button (click)="addnewnamefun()">add</button>
+      <!-- here we are calling the function decalared in the component.ts -->
+      <!-- when we are using ngsubmit we should not use multiple button in form (or) dont add any click event to the button -->
+
+      <button>test ngSubmit</button>
+    </div>
+  </form>
+  <br>
+  <form action="" #formvalidation #tagformtwo = "ngForm" (ngSubmit)="selecteddatefun(tagformtwo)"> 
+    <!-- if you want to apply the ngsubmit to perticular input or tag -->
+    <!-- here i am creating "formvalidation" tag (local reference to use it in button to disable it)-->
+
+    <div>
+      <p> selected date : {{selecteddate}}</p>
+      <input name="setdate" type="text" [(ngModel)]="selecteddate" [matDatepicker]="picker" required readonly> <!-- here readonly is used to restrict the user to edit the value in input box-->
+      <!-- here we are printing the data in the input box when the page got loaded and here we are useing ngmodel insted of value because of 2 way bindinh -->
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <button>to test ng submit for perticular tag in form</button>
+    </div>
+    <br>
+    <div>
+      <input name="setsomevalue" type="text" [(ngModel)]="somevalue" #tagsetsomevalue="ngModel" placeholder="setsomevalue" required minlength="4">   <!--  if you wont set [(ngModel)] then we cant set ngModel to tag -->
+      <div *ngIf="tagsetsomevalue.invalid && (tagsetsomevalue.touched || tagsetsomevalue.dirty)" class="setsomevalue">   <!-- here we are using ngIf to decide to print the error msg or not -->
+        <p *ngIf="tagsetsomevalue.errors?.['required']">this will be printed when the "setsomevalue" input is empty</p>  <!-- here we are using ngIf to print different error msg for different errors -->
+        <p *ngIf="tagsetsomevalue.errors?.['minlength']">this prints when "setsomevalue" length is less than 4</p>
+      </div>
+      <button (click)="add(tagsetsomevalue.value)" [disabled]="!formvalidation.checkValidity()">to check validation</button> <!-- here we are disabling tthe button -->
+    </div>
+  </form>
+  <br>
+
+  <table>
+    <tr *ngFor="let n of names">
+      <td>
+        <p [ngClass]="classVar">{{n.name}}</p> 
+        <!-- here classVar is a variable that we definded in the component.ts file to give the dinamic class name 
+             we can send an arry to apply multiple classes
+        -->
+        <p [class.is-done]="n.isDone">{{n.name}}</p>
+        <!--in angular all css classes we can apply them based on the condition  -->
+      </td>
+      <td>
+        <button (click)="remove(n)">x</button>
+        <button (click)="n.done()">{{n.isDone? "undo" : "done"}}</button>
+      </td>
+    </tr>
+  </table>
+
+
+</div>
